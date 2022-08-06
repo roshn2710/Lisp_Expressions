@@ -1,0 +1,1197 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Start
+Rule 1     Start -> Expr SEMI
+Rule 2     Start -> BoolExpr SEMI
+Rule 3     Start -> ListExpr SEMI
+Rule 4     Expr -> NUMBER
+Rule 5     Expr -> LPAREN PLUS Expr Expr RPAREN
+Rule 6     Expr -> LPAREN MINUS Expr Expr RPAREN
+Rule 7     Expr -> LPAREN TIMES Expr Expr RPAREN
+Rule 8     Expr -> LPAREN DIVIDE Expr Expr RPAREN
+Rule 9     Expr -> LPAREN CAR ListExpr RPAREN
+Rule 10    Expr -> LPAREN IF BoolExpr Expr Expr RPAREN
+Rule 11    BoolExpr -> TRUE
+Rule 12    BoolExpr -> FALSE
+Rule 13    BoolExpr -> LPAREN GR Expr Expr RPAREN
+Rule 14    BoolExpr -> LPAREN GREQ Expr Expr RPAREN
+Rule 15    BoolExpr -> LPAREN LT Expr Expr RPAREN
+Rule 16    BoolExpr -> LPAREN LTEQ Expr Expr RPAREN
+Rule 17    BoolExpr -> LPAREN EQ Expr Expr RPAREN
+Rule 18    BoolExpr -> LPAREN NEQ Expr Expr RPAREN
+Rule 19    BoolExpr -> LPAREN NOT BoolExpr RPAREN
+Rule 20    BoolExpr -> LPAREN AND BoolExpr BoolExpr RPAREN
+Rule 21    BoolExpr -> LPAREN OR BoolExpr BoolExpr RPAREN
+Rule 22    ExprArray -> ExprArray Expr
+Rule 23    ExprArray -> Expr
+Rule 24    ListExpr -> LPAREN ExprArray RPAREN
+Rule 25    ListExpr -> LPAREN RPAREN
+Rule 26    ListExpr -> LPAREN CDR ListExpr RPAREN
+Rule 27    ListExpr -> LPAREN CONS Expr ListExpr RPAREN
+Rule 28    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 20
+CAR                  : 9
+CDR                  : 26
+CONS                 : 27
+DIVIDE               : 8
+EQ                   : 17
+FALSE                : 12
+GR                   : 13
+GREQ                 : 14
+IF                   : 10
+LPAREN               : 5 6 7 8 9 10 13 14 15 16 17 18 19 20 21 24 25 26 27
+LT                   : 15
+LTEQ                 : 16
+MINUS                : 6
+NEQ                  : 18
+NOT                  : 19
+NUMBER               : 4
+OR                   : 21
+PLUS                 : 5
+RPAREN               : 5 6 7 8 9 10 13 14 15 16 17 18 19 20 21 24 25 26 27
+SEMI                 : 1 2 3
+TIMES                : 7
+TRUE                 : 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+BoolExpr             : 2 10 19 20 20 21 21
+Expr                 : 1 5 5 6 6 7 7 8 8 10 10 13 13 14 14 15 15 16 16 17 17 18 18 22 23 27
+ExprArray            : 22 24
+ListExpr             : 3 9 26 27
+Start                : 0
+empty                : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Start
+    (1) Start -> . Expr SEMI
+    (2) Start -> . BoolExpr SEMI
+    (3) Start -> . ListExpr SEMI
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+    (11) BoolExpr -> . TRUE
+    (12) BoolExpr -> . FALSE
+    (13) BoolExpr -> . LPAREN GR Expr Expr RPAREN
+    (14) BoolExpr -> . LPAREN GREQ Expr Expr RPAREN
+    (15) BoolExpr -> . LPAREN LT Expr Expr RPAREN
+    (16) BoolExpr -> . LPAREN LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> . LPAREN EQ Expr Expr RPAREN
+    (18) BoolExpr -> . LPAREN NEQ Expr Expr RPAREN
+    (19) BoolExpr -> . LPAREN NOT BoolExpr RPAREN
+    (20) BoolExpr -> . LPAREN AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> . LPAREN OR BoolExpr BoolExpr RPAREN
+    (24) ListExpr -> . LPAREN ExprArray RPAREN
+    (25) ListExpr -> . LPAREN RPAREN
+    (26) ListExpr -> . LPAREN CDR ListExpr RPAREN
+    (27) ListExpr -> . LPAREN CONS Expr ListExpr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 6
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+
+    Start                          shift and go to state 1
+    Expr                           shift and go to state 2
+    BoolExpr                       shift and go to state 3
+    ListExpr                       shift and go to state 4
+
+state 1
+
+    (0) S' -> Start .
+
+
+
+state 2
+
+    (1) Start -> Expr . SEMI
+
+    SEMI            shift and go to state 9
+
+
+state 3
+
+    (2) Start -> BoolExpr . SEMI
+
+    SEMI            shift and go to state 10
+
+
+state 4
+
+    (3) Start -> ListExpr . SEMI
+
+    SEMI            shift and go to state 11
+
+
+state 5
+
+    (4) Expr -> NUMBER .
+
+    SEMI            reduce using rule 4 (Expr -> NUMBER .)
+    RPAREN          reduce using rule 4 (Expr -> NUMBER .)
+    NUMBER          reduce using rule 4 (Expr -> NUMBER .)
+    LPAREN          reduce using rule 4 (Expr -> NUMBER .)
+
+
+state 6
+
+    (5) Expr -> LPAREN . PLUS Expr Expr RPAREN
+    (6) Expr -> LPAREN . MINUS Expr Expr RPAREN
+    (7) Expr -> LPAREN . TIMES Expr Expr RPAREN
+    (8) Expr -> LPAREN . DIVIDE Expr Expr RPAREN
+    (9) Expr -> LPAREN . CAR ListExpr RPAREN
+    (10) Expr -> LPAREN . IF BoolExpr Expr Expr RPAREN
+    (13) BoolExpr -> LPAREN . GR Expr Expr RPAREN
+    (14) BoolExpr -> LPAREN . GREQ Expr Expr RPAREN
+    (15) BoolExpr -> LPAREN . LT Expr Expr RPAREN
+    (16) BoolExpr -> LPAREN . LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> LPAREN . EQ Expr Expr RPAREN
+    (18) BoolExpr -> LPAREN . NEQ Expr Expr RPAREN
+    (19) BoolExpr -> LPAREN . NOT BoolExpr RPAREN
+    (20) BoolExpr -> LPAREN . AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> LPAREN . OR BoolExpr BoolExpr RPAREN
+    (24) ListExpr -> LPAREN . ExprArray RPAREN
+    (25) ListExpr -> LPAREN . RPAREN
+    (26) ListExpr -> LPAREN . CDR ListExpr RPAREN
+    (27) ListExpr -> LPAREN . CONS Expr ListExpr RPAREN
+    (22) ExprArray -> . ExprArray Expr
+    (23) ExprArray -> . Expr
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    CAR             shift and go to state 19
+    IF              shift and go to state 20
+    GR              shift and go to state 21
+    GREQ            shift and go to state 22
+    LT              shift and go to state 23
+    LTEQ            shift and go to state 24
+    EQ              shift and go to state 25
+    NEQ             shift and go to state 26
+    NOT             shift and go to state 27
+    AND             shift and go to state 28
+    OR              shift and go to state 29
+    RPAREN          shift and go to state 15
+    CDR             shift and go to state 31
+    CONS            shift and go to state 32
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 14
+    ExprArray                      shift and go to state 30
+
+state 7
+
+    (11) BoolExpr -> TRUE .
+
+    SEMI            reduce using rule 11 (BoolExpr -> TRUE .)
+    NUMBER          reduce using rule 11 (BoolExpr -> TRUE .)
+    LPAREN          reduce using rule 11 (BoolExpr -> TRUE .)
+    RPAREN          reduce using rule 11 (BoolExpr -> TRUE .)
+    TRUE            reduce using rule 11 (BoolExpr -> TRUE .)
+    FALSE           reduce using rule 11 (BoolExpr -> TRUE .)
+
+
+state 8
+
+    (12) BoolExpr -> FALSE .
+
+    SEMI            reduce using rule 12 (BoolExpr -> FALSE .)
+    NUMBER          reduce using rule 12 (BoolExpr -> FALSE .)
+    LPAREN          reduce using rule 12 (BoolExpr -> FALSE .)
+    RPAREN          reduce using rule 12 (BoolExpr -> FALSE .)
+    TRUE            reduce using rule 12 (BoolExpr -> FALSE .)
+    FALSE           reduce using rule 12 (BoolExpr -> FALSE .)
+
+
+state 9
+
+    (1) Start -> Expr SEMI .
+
+    $end            reduce using rule 1 (Start -> Expr SEMI .)
+
+
+state 10
+
+    (2) Start -> BoolExpr SEMI .
+
+    $end            reduce using rule 2 (Start -> BoolExpr SEMI .)
+
+
+state 11
+
+    (3) Start -> ListExpr SEMI .
+
+    $end            reduce using rule 3 (Start -> ListExpr SEMI .)
+
+
+state 12
+
+    (5) Expr -> LPAREN . PLUS Expr Expr RPAREN
+    (6) Expr -> LPAREN . MINUS Expr Expr RPAREN
+    (7) Expr -> LPAREN . TIMES Expr Expr RPAREN
+    (8) Expr -> LPAREN . DIVIDE Expr Expr RPAREN
+    (9) Expr -> LPAREN . CAR ListExpr RPAREN
+    (10) Expr -> LPAREN . IF BoolExpr Expr Expr RPAREN
+
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 16
+    TIMES           shift and go to state 17
+    DIVIDE          shift and go to state 18
+    CAR             shift and go to state 19
+    IF              shift and go to state 20
+
+
+state 13
+
+    (5) Expr -> LPAREN PLUS . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 33
+
+state 14
+
+    (23) ExprArray -> Expr .
+
+    RPAREN          reduce using rule 23 (ExprArray -> Expr .)
+    NUMBER          reduce using rule 23 (ExprArray -> Expr .)
+    LPAREN          reduce using rule 23 (ExprArray -> Expr .)
+
+
+state 15
+
+    (25) ListExpr -> LPAREN RPAREN .
+
+    SEMI            reduce using rule 25 (ListExpr -> LPAREN RPAREN .)
+    RPAREN          reduce using rule 25 (ListExpr -> LPAREN RPAREN .)
+
+
+state 16
+
+    (6) Expr -> LPAREN MINUS . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 34
+
+state 17
+
+    (7) Expr -> LPAREN TIMES . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 35
+
+state 18
+
+    (8) Expr -> LPAREN DIVIDE . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 36
+
+state 19
+
+    (9) Expr -> LPAREN CAR . ListExpr RPAREN
+    (24) ListExpr -> . LPAREN ExprArray RPAREN
+    (25) ListExpr -> . LPAREN RPAREN
+    (26) ListExpr -> . LPAREN CDR ListExpr RPAREN
+    (27) ListExpr -> . LPAREN CONS Expr ListExpr RPAREN
+
+    LPAREN          shift and go to state 37
+
+    ListExpr                       shift and go to state 38
+
+state 20
+
+    (10) Expr -> LPAREN IF . BoolExpr Expr Expr RPAREN
+    (11) BoolExpr -> . TRUE
+    (12) BoolExpr -> . FALSE
+    (13) BoolExpr -> . LPAREN GR Expr Expr RPAREN
+    (14) BoolExpr -> . LPAREN GREQ Expr Expr RPAREN
+    (15) BoolExpr -> . LPAREN LT Expr Expr RPAREN
+    (16) BoolExpr -> . LPAREN LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> . LPAREN EQ Expr Expr RPAREN
+    (18) BoolExpr -> . LPAREN NEQ Expr Expr RPAREN
+    (19) BoolExpr -> . LPAREN NOT BoolExpr RPAREN
+    (20) BoolExpr -> . LPAREN AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> . LPAREN OR BoolExpr BoolExpr RPAREN
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPAREN          shift and go to state 39
+
+    BoolExpr                       shift and go to state 40
+
+state 21
+
+    (13) BoolExpr -> LPAREN GR . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 41
+
+state 22
+
+    (14) BoolExpr -> LPAREN GREQ . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 42
+
+state 23
+
+    (15) BoolExpr -> LPAREN LT . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 43
+
+state 24
+
+    (16) BoolExpr -> LPAREN LTEQ . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 44
+
+state 25
+
+    (17) BoolExpr -> LPAREN EQ . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 45
+
+state 26
+
+    (18) BoolExpr -> LPAREN NEQ . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 46
+
+state 27
+
+    (19) BoolExpr -> LPAREN NOT . BoolExpr RPAREN
+    (11) BoolExpr -> . TRUE
+    (12) BoolExpr -> . FALSE
+    (13) BoolExpr -> . LPAREN GR Expr Expr RPAREN
+    (14) BoolExpr -> . LPAREN GREQ Expr Expr RPAREN
+    (15) BoolExpr -> . LPAREN LT Expr Expr RPAREN
+    (16) BoolExpr -> . LPAREN LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> . LPAREN EQ Expr Expr RPAREN
+    (18) BoolExpr -> . LPAREN NEQ Expr Expr RPAREN
+    (19) BoolExpr -> . LPAREN NOT BoolExpr RPAREN
+    (20) BoolExpr -> . LPAREN AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> . LPAREN OR BoolExpr BoolExpr RPAREN
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPAREN          shift and go to state 39
+
+    BoolExpr                       shift and go to state 47
+
+state 28
+
+    (20) BoolExpr -> LPAREN AND . BoolExpr BoolExpr RPAREN
+    (11) BoolExpr -> . TRUE
+    (12) BoolExpr -> . FALSE
+    (13) BoolExpr -> . LPAREN GR Expr Expr RPAREN
+    (14) BoolExpr -> . LPAREN GREQ Expr Expr RPAREN
+    (15) BoolExpr -> . LPAREN LT Expr Expr RPAREN
+    (16) BoolExpr -> . LPAREN LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> . LPAREN EQ Expr Expr RPAREN
+    (18) BoolExpr -> . LPAREN NEQ Expr Expr RPAREN
+    (19) BoolExpr -> . LPAREN NOT BoolExpr RPAREN
+    (20) BoolExpr -> . LPAREN AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> . LPAREN OR BoolExpr BoolExpr RPAREN
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPAREN          shift and go to state 39
+
+    BoolExpr                       shift and go to state 48
+
+state 29
+
+    (21) BoolExpr -> LPAREN OR . BoolExpr BoolExpr RPAREN
+    (11) BoolExpr -> . TRUE
+    (12) BoolExpr -> . FALSE
+    (13) BoolExpr -> . LPAREN GR Expr Expr RPAREN
+    (14) BoolExpr -> . LPAREN GREQ Expr Expr RPAREN
+    (15) BoolExpr -> . LPAREN LT Expr Expr RPAREN
+    (16) BoolExpr -> . LPAREN LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> . LPAREN EQ Expr Expr RPAREN
+    (18) BoolExpr -> . LPAREN NEQ Expr Expr RPAREN
+    (19) BoolExpr -> . LPAREN NOT BoolExpr RPAREN
+    (20) BoolExpr -> . LPAREN AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> . LPAREN OR BoolExpr BoolExpr RPAREN
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPAREN          shift and go to state 39
+
+    BoolExpr                       shift and go to state 49
+
+state 30
+
+    (24) ListExpr -> LPAREN ExprArray . RPAREN
+    (22) ExprArray -> ExprArray . Expr
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    RPAREN          shift and go to state 50
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 51
+
+state 31
+
+    (26) ListExpr -> LPAREN CDR . ListExpr RPAREN
+    (24) ListExpr -> . LPAREN ExprArray RPAREN
+    (25) ListExpr -> . LPAREN RPAREN
+    (26) ListExpr -> . LPAREN CDR ListExpr RPAREN
+    (27) ListExpr -> . LPAREN CONS Expr ListExpr RPAREN
+
+    LPAREN          shift and go to state 37
+
+    ListExpr                       shift and go to state 52
+
+state 32
+
+    (27) ListExpr -> LPAREN CONS . Expr ListExpr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 53
+
+state 33
+
+    (5) Expr -> LPAREN PLUS Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 54
+
+state 34
+
+    (6) Expr -> LPAREN MINUS Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 55
+
+state 35
+
+    (7) Expr -> LPAREN TIMES Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 56
+
+state 36
+
+    (8) Expr -> LPAREN DIVIDE Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 57
+
+state 37
+
+    (24) ListExpr -> LPAREN . ExprArray RPAREN
+    (25) ListExpr -> LPAREN . RPAREN
+    (26) ListExpr -> LPAREN . CDR ListExpr RPAREN
+    (27) ListExpr -> LPAREN . CONS Expr ListExpr RPAREN
+    (22) ExprArray -> . ExprArray Expr
+    (23) ExprArray -> . Expr
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    RPAREN          shift and go to state 15
+    CDR             shift and go to state 31
+    CONS            shift and go to state 32
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    ExprArray                      shift and go to state 30
+    Expr                           shift and go to state 14
+
+state 38
+
+    (9) Expr -> LPAREN CAR ListExpr . RPAREN
+
+    RPAREN          shift and go to state 58
+
+
+state 39
+
+    (13) BoolExpr -> LPAREN . GR Expr Expr RPAREN
+    (14) BoolExpr -> LPAREN . GREQ Expr Expr RPAREN
+    (15) BoolExpr -> LPAREN . LT Expr Expr RPAREN
+    (16) BoolExpr -> LPAREN . LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> LPAREN . EQ Expr Expr RPAREN
+    (18) BoolExpr -> LPAREN . NEQ Expr Expr RPAREN
+    (19) BoolExpr -> LPAREN . NOT BoolExpr RPAREN
+    (20) BoolExpr -> LPAREN . AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> LPAREN . OR BoolExpr BoolExpr RPAREN
+
+    GR              shift and go to state 21
+    GREQ            shift and go to state 22
+    LT              shift and go to state 23
+    LTEQ            shift and go to state 24
+    EQ              shift and go to state 25
+    NEQ             shift and go to state 26
+    NOT             shift and go to state 27
+    AND             shift and go to state 28
+    OR              shift and go to state 29
+
+
+state 40
+
+    (10) Expr -> LPAREN IF BoolExpr . Expr Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 59
+
+state 41
+
+    (13) BoolExpr -> LPAREN GR Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 60
+
+state 42
+
+    (14) BoolExpr -> LPAREN GREQ Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 61
+
+state 43
+
+    (15) BoolExpr -> LPAREN LT Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 62
+
+state 44
+
+    (16) BoolExpr -> LPAREN LTEQ Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 63
+
+state 45
+
+    (17) BoolExpr -> LPAREN EQ Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 64
+
+state 46
+
+    (18) BoolExpr -> LPAREN NEQ Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 65
+
+state 47
+
+    (19) BoolExpr -> LPAREN NOT BoolExpr . RPAREN
+
+    RPAREN          shift and go to state 66
+
+
+state 48
+
+    (20) BoolExpr -> LPAREN AND BoolExpr . BoolExpr RPAREN
+    (11) BoolExpr -> . TRUE
+    (12) BoolExpr -> . FALSE
+    (13) BoolExpr -> . LPAREN GR Expr Expr RPAREN
+    (14) BoolExpr -> . LPAREN GREQ Expr Expr RPAREN
+    (15) BoolExpr -> . LPAREN LT Expr Expr RPAREN
+    (16) BoolExpr -> . LPAREN LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> . LPAREN EQ Expr Expr RPAREN
+    (18) BoolExpr -> . LPAREN NEQ Expr Expr RPAREN
+    (19) BoolExpr -> . LPAREN NOT BoolExpr RPAREN
+    (20) BoolExpr -> . LPAREN AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> . LPAREN OR BoolExpr BoolExpr RPAREN
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPAREN          shift and go to state 39
+
+    BoolExpr                       shift and go to state 67
+
+state 49
+
+    (21) BoolExpr -> LPAREN OR BoolExpr . BoolExpr RPAREN
+    (11) BoolExpr -> . TRUE
+    (12) BoolExpr -> . FALSE
+    (13) BoolExpr -> . LPAREN GR Expr Expr RPAREN
+    (14) BoolExpr -> . LPAREN GREQ Expr Expr RPAREN
+    (15) BoolExpr -> . LPAREN LT Expr Expr RPAREN
+    (16) BoolExpr -> . LPAREN LTEQ Expr Expr RPAREN
+    (17) BoolExpr -> . LPAREN EQ Expr Expr RPAREN
+    (18) BoolExpr -> . LPAREN NEQ Expr Expr RPAREN
+    (19) BoolExpr -> . LPAREN NOT BoolExpr RPAREN
+    (20) BoolExpr -> . LPAREN AND BoolExpr BoolExpr RPAREN
+    (21) BoolExpr -> . LPAREN OR BoolExpr BoolExpr RPAREN
+
+    TRUE            shift and go to state 7
+    FALSE           shift and go to state 8
+    LPAREN          shift and go to state 39
+
+    BoolExpr                       shift and go to state 68
+
+state 50
+
+    (24) ListExpr -> LPAREN ExprArray RPAREN .
+
+    SEMI            reduce using rule 24 (ListExpr -> LPAREN ExprArray RPAREN .)
+    RPAREN          reduce using rule 24 (ListExpr -> LPAREN ExprArray RPAREN .)
+
+
+state 51
+
+    (22) ExprArray -> ExprArray Expr .
+
+    RPAREN          reduce using rule 22 (ExprArray -> ExprArray Expr .)
+    NUMBER          reduce using rule 22 (ExprArray -> ExprArray Expr .)
+    LPAREN          reduce using rule 22 (ExprArray -> ExprArray Expr .)
+
+
+state 52
+
+    (26) ListExpr -> LPAREN CDR ListExpr . RPAREN
+
+    RPAREN          shift and go to state 69
+
+
+state 53
+
+    (27) ListExpr -> LPAREN CONS Expr . ListExpr RPAREN
+    (24) ListExpr -> . LPAREN ExprArray RPAREN
+    (25) ListExpr -> . LPAREN RPAREN
+    (26) ListExpr -> . LPAREN CDR ListExpr RPAREN
+    (27) ListExpr -> . LPAREN CONS Expr ListExpr RPAREN
+
+    LPAREN          shift and go to state 37
+
+    ListExpr                       shift and go to state 70
+
+state 54
+
+    (5) Expr -> LPAREN PLUS Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 71
+
+
+state 55
+
+    (6) Expr -> LPAREN MINUS Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 72
+
+
+state 56
+
+    (7) Expr -> LPAREN TIMES Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 73
+
+
+state 57
+
+    (8) Expr -> LPAREN DIVIDE Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 74
+
+
+state 58
+
+    (9) Expr -> LPAREN CAR ListExpr RPAREN .
+
+    SEMI            reduce using rule 9 (Expr -> LPAREN CAR ListExpr RPAREN .)
+    RPAREN          reduce using rule 9 (Expr -> LPAREN CAR ListExpr RPAREN .)
+    NUMBER          reduce using rule 9 (Expr -> LPAREN CAR ListExpr RPAREN .)
+    LPAREN          reduce using rule 9 (Expr -> LPAREN CAR ListExpr RPAREN .)
+
+
+state 59
+
+    (10) Expr -> LPAREN IF BoolExpr Expr . Expr RPAREN
+    (4) Expr -> . NUMBER
+    (5) Expr -> . LPAREN PLUS Expr Expr RPAREN
+    (6) Expr -> . LPAREN MINUS Expr Expr RPAREN
+    (7) Expr -> . LPAREN TIMES Expr Expr RPAREN
+    (8) Expr -> . LPAREN DIVIDE Expr Expr RPAREN
+    (9) Expr -> . LPAREN CAR ListExpr RPAREN
+    (10) Expr -> . LPAREN IF BoolExpr Expr Expr RPAREN
+
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 12
+
+    Expr                           shift and go to state 75
+
+state 60
+
+    (13) BoolExpr -> LPAREN GR Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 76
+
+
+state 61
+
+    (14) BoolExpr -> LPAREN GREQ Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 77
+
+
+state 62
+
+    (15) BoolExpr -> LPAREN LT Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 78
+
+
+state 63
+
+    (16) BoolExpr -> LPAREN LTEQ Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 79
+
+
+state 64
+
+    (17) BoolExpr -> LPAREN EQ Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 80
+
+
+state 65
+
+    (18) BoolExpr -> LPAREN NEQ Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 81
+
+
+state 66
+
+    (19) BoolExpr -> LPAREN NOT BoolExpr RPAREN .
+
+    SEMI            reduce using rule 19 (BoolExpr -> LPAREN NOT BoolExpr RPAREN .)
+    NUMBER          reduce using rule 19 (BoolExpr -> LPAREN NOT BoolExpr RPAREN .)
+    LPAREN          reduce using rule 19 (BoolExpr -> LPAREN NOT BoolExpr RPAREN .)
+    RPAREN          reduce using rule 19 (BoolExpr -> LPAREN NOT BoolExpr RPAREN .)
+    TRUE            reduce using rule 19 (BoolExpr -> LPAREN NOT BoolExpr RPAREN .)
+    FALSE           reduce using rule 19 (BoolExpr -> LPAREN NOT BoolExpr RPAREN .)
+
+
+state 67
+
+    (20) BoolExpr -> LPAREN AND BoolExpr BoolExpr . RPAREN
+
+    RPAREN          shift and go to state 82
+
+
+state 68
+
+    (21) BoolExpr -> LPAREN OR BoolExpr BoolExpr . RPAREN
+
+    RPAREN          shift and go to state 83
+
+
+state 69
+
+    (26) ListExpr -> LPAREN CDR ListExpr RPAREN .
+
+    SEMI            reduce using rule 26 (ListExpr -> LPAREN CDR ListExpr RPAREN .)
+    RPAREN          reduce using rule 26 (ListExpr -> LPAREN CDR ListExpr RPAREN .)
+
+
+state 70
+
+    (27) ListExpr -> LPAREN CONS Expr ListExpr . RPAREN
+
+    RPAREN          shift and go to state 84
+
+
+state 71
+
+    (5) Expr -> LPAREN PLUS Expr Expr RPAREN .
+
+    SEMI            reduce using rule 5 (Expr -> LPAREN PLUS Expr Expr RPAREN .)
+    RPAREN          reduce using rule 5 (Expr -> LPAREN PLUS Expr Expr RPAREN .)
+    NUMBER          reduce using rule 5 (Expr -> LPAREN PLUS Expr Expr RPAREN .)
+    LPAREN          reduce using rule 5 (Expr -> LPAREN PLUS Expr Expr RPAREN .)
+
+
+state 72
+
+    (6) Expr -> LPAREN MINUS Expr Expr RPAREN .
+
+    SEMI            reduce using rule 6 (Expr -> LPAREN MINUS Expr Expr RPAREN .)
+    RPAREN          reduce using rule 6 (Expr -> LPAREN MINUS Expr Expr RPAREN .)
+    NUMBER          reduce using rule 6 (Expr -> LPAREN MINUS Expr Expr RPAREN .)
+    LPAREN          reduce using rule 6 (Expr -> LPAREN MINUS Expr Expr RPAREN .)
+
+
+state 73
+
+    (7) Expr -> LPAREN TIMES Expr Expr RPAREN .
+
+    SEMI            reduce using rule 7 (Expr -> LPAREN TIMES Expr Expr RPAREN .)
+    RPAREN          reduce using rule 7 (Expr -> LPAREN TIMES Expr Expr RPAREN .)
+    NUMBER          reduce using rule 7 (Expr -> LPAREN TIMES Expr Expr RPAREN .)
+    LPAREN          reduce using rule 7 (Expr -> LPAREN TIMES Expr Expr RPAREN .)
+
+
+state 74
+
+    (8) Expr -> LPAREN DIVIDE Expr Expr RPAREN .
+
+    SEMI            reduce using rule 8 (Expr -> LPAREN DIVIDE Expr Expr RPAREN .)
+    RPAREN          reduce using rule 8 (Expr -> LPAREN DIVIDE Expr Expr RPAREN .)
+    NUMBER          reduce using rule 8 (Expr -> LPAREN DIVIDE Expr Expr RPAREN .)
+    LPAREN          reduce using rule 8 (Expr -> LPAREN DIVIDE Expr Expr RPAREN .)
+
+
+state 75
+
+    (10) Expr -> LPAREN IF BoolExpr Expr Expr . RPAREN
+
+    RPAREN          shift and go to state 85
+
+
+state 76
+
+    (13) BoolExpr -> LPAREN GR Expr Expr RPAREN .
+
+    SEMI            reduce using rule 13 (BoolExpr -> LPAREN GR Expr Expr RPAREN .)
+    NUMBER          reduce using rule 13 (BoolExpr -> LPAREN GR Expr Expr RPAREN .)
+    LPAREN          reduce using rule 13 (BoolExpr -> LPAREN GR Expr Expr RPAREN .)
+    RPAREN          reduce using rule 13 (BoolExpr -> LPAREN GR Expr Expr RPAREN .)
+    TRUE            reduce using rule 13 (BoolExpr -> LPAREN GR Expr Expr RPAREN .)
+    FALSE           reduce using rule 13 (BoolExpr -> LPAREN GR Expr Expr RPAREN .)
+
+
+state 77
+
+    (14) BoolExpr -> LPAREN GREQ Expr Expr RPAREN .
+
+    SEMI            reduce using rule 14 (BoolExpr -> LPAREN GREQ Expr Expr RPAREN .)
+    NUMBER          reduce using rule 14 (BoolExpr -> LPAREN GREQ Expr Expr RPAREN .)
+    LPAREN          reduce using rule 14 (BoolExpr -> LPAREN GREQ Expr Expr RPAREN .)
+    RPAREN          reduce using rule 14 (BoolExpr -> LPAREN GREQ Expr Expr RPAREN .)
+    TRUE            reduce using rule 14 (BoolExpr -> LPAREN GREQ Expr Expr RPAREN .)
+    FALSE           reduce using rule 14 (BoolExpr -> LPAREN GREQ Expr Expr RPAREN .)
+
+
+state 78
+
+    (15) BoolExpr -> LPAREN LT Expr Expr RPAREN .
+
+    SEMI            reduce using rule 15 (BoolExpr -> LPAREN LT Expr Expr RPAREN .)
+    NUMBER          reduce using rule 15 (BoolExpr -> LPAREN LT Expr Expr RPAREN .)
+    LPAREN          reduce using rule 15 (BoolExpr -> LPAREN LT Expr Expr RPAREN .)
+    RPAREN          reduce using rule 15 (BoolExpr -> LPAREN LT Expr Expr RPAREN .)
+    TRUE            reduce using rule 15 (BoolExpr -> LPAREN LT Expr Expr RPAREN .)
+    FALSE           reduce using rule 15 (BoolExpr -> LPAREN LT Expr Expr RPAREN .)
+
+
+state 79
+
+    (16) BoolExpr -> LPAREN LTEQ Expr Expr RPAREN .
+
+    SEMI            reduce using rule 16 (BoolExpr -> LPAREN LTEQ Expr Expr RPAREN .)
+    NUMBER          reduce using rule 16 (BoolExpr -> LPAREN LTEQ Expr Expr RPAREN .)
+    LPAREN          reduce using rule 16 (BoolExpr -> LPAREN LTEQ Expr Expr RPAREN .)
+    RPAREN          reduce using rule 16 (BoolExpr -> LPAREN LTEQ Expr Expr RPAREN .)
+    TRUE            reduce using rule 16 (BoolExpr -> LPAREN LTEQ Expr Expr RPAREN .)
+    FALSE           reduce using rule 16 (BoolExpr -> LPAREN LTEQ Expr Expr RPAREN .)
+
+
+state 80
+
+    (17) BoolExpr -> LPAREN EQ Expr Expr RPAREN .
+
+    SEMI            reduce using rule 17 (BoolExpr -> LPAREN EQ Expr Expr RPAREN .)
+    NUMBER          reduce using rule 17 (BoolExpr -> LPAREN EQ Expr Expr RPAREN .)
+    LPAREN          reduce using rule 17 (BoolExpr -> LPAREN EQ Expr Expr RPAREN .)
+    RPAREN          reduce using rule 17 (BoolExpr -> LPAREN EQ Expr Expr RPAREN .)
+    TRUE            reduce using rule 17 (BoolExpr -> LPAREN EQ Expr Expr RPAREN .)
+    FALSE           reduce using rule 17 (BoolExpr -> LPAREN EQ Expr Expr RPAREN .)
+
+
+state 81
+
+    (18) BoolExpr -> LPAREN NEQ Expr Expr RPAREN .
+
+    SEMI            reduce using rule 18 (BoolExpr -> LPAREN NEQ Expr Expr RPAREN .)
+    NUMBER          reduce using rule 18 (BoolExpr -> LPAREN NEQ Expr Expr RPAREN .)
+    LPAREN          reduce using rule 18 (BoolExpr -> LPAREN NEQ Expr Expr RPAREN .)
+    RPAREN          reduce using rule 18 (BoolExpr -> LPAREN NEQ Expr Expr RPAREN .)
+    TRUE            reduce using rule 18 (BoolExpr -> LPAREN NEQ Expr Expr RPAREN .)
+    FALSE           reduce using rule 18 (BoolExpr -> LPAREN NEQ Expr Expr RPAREN .)
+
+
+state 82
+
+    (20) BoolExpr -> LPAREN AND BoolExpr BoolExpr RPAREN .
+
+    SEMI            reduce using rule 20 (BoolExpr -> LPAREN AND BoolExpr BoolExpr RPAREN .)
+    NUMBER          reduce using rule 20 (BoolExpr -> LPAREN AND BoolExpr BoolExpr RPAREN .)
+    LPAREN          reduce using rule 20 (BoolExpr -> LPAREN AND BoolExpr BoolExpr RPAREN .)
+    RPAREN          reduce using rule 20 (BoolExpr -> LPAREN AND BoolExpr BoolExpr RPAREN .)
+    TRUE            reduce using rule 20 (BoolExpr -> LPAREN AND BoolExpr BoolExpr RPAREN .)
+    FALSE           reduce using rule 20 (BoolExpr -> LPAREN AND BoolExpr BoolExpr RPAREN .)
+
+
+state 83
+
+    (21) BoolExpr -> LPAREN OR BoolExpr BoolExpr RPAREN .
+
+    SEMI            reduce using rule 21 (BoolExpr -> LPAREN OR BoolExpr BoolExpr RPAREN .)
+    NUMBER          reduce using rule 21 (BoolExpr -> LPAREN OR BoolExpr BoolExpr RPAREN .)
+    LPAREN          reduce using rule 21 (BoolExpr -> LPAREN OR BoolExpr BoolExpr RPAREN .)
+    RPAREN          reduce using rule 21 (BoolExpr -> LPAREN OR BoolExpr BoolExpr RPAREN .)
+    TRUE            reduce using rule 21 (BoolExpr -> LPAREN OR BoolExpr BoolExpr RPAREN .)
+    FALSE           reduce using rule 21 (BoolExpr -> LPAREN OR BoolExpr BoolExpr RPAREN .)
+
+
+state 84
+
+    (27) ListExpr -> LPAREN CONS Expr ListExpr RPAREN .
+
+    SEMI            reduce using rule 27 (ListExpr -> LPAREN CONS Expr ListExpr RPAREN .)
+    RPAREN          reduce using rule 27 (ListExpr -> LPAREN CONS Expr ListExpr RPAREN .)
+
+
+state 85
+
+    (10) Expr -> LPAREN IF BoolExpr Expr Expr RPAREN .
+
+    SEMI            reduce using rule 10 (Expr -> LPAREN IF BoolExpr Expr Expr RPAREN .)
+    RPAREN          reduce using rule 10 (Expr -> LPAREN IF BoolExpr Expr Expr RPAREN .)
+    NUMBER          reduce using rule 10 (Expr -> LPAREN IF BoolExpr Expr Expr RPAREN .)
+    LPAREN          reduce using rule 10 (Expr -> LPAREN IF BoolExpr Expr Expr RPAREN .)
+
